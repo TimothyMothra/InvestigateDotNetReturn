@@ -23,6 +23,8 @@ jobs:
       matrix:
         dotnet-version: [8.0.405, 8.0.406]
 
+    continue-on-error: false # Ensure individual job failures don’t cancel the entire matrix
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Install dependencies
@@ -41,5 +43,4 @@ jobs:
         
       - name: .NET build
         run: dotnet build
-        continue-on-error: true # Ensure failure in one job doesn’t cancel others
 
