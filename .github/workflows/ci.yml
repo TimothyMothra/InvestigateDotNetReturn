@@ -21,7 +21,7 @@ jobs:
       image: ubuntu:latest
     strategy:
       matrix:
-        dotnet-version: [8.0.12, 8.0.13]
+        dotnet-version: [8.0.405, 8.0.406]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
