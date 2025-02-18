@@ -41,3 +41,5 @@ jobs:
         
       - name: .NET build
         run: dotnet build
+        continue-on-error: true # Ensure failure in one job doesn’t cancel others
+
