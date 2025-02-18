@@ -39,5 +39,5 @@ jobs:
       - name: Display .NET info
         run: dotnet --info
         
-      # - name: .NET build
-      #   run: dotnet build
+      - name: .NET build
+        run: dotnet build
