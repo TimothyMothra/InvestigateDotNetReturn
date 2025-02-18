@@ -25,18 +25,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      
-      - name: Install curl
-        run: sudo apt-get update && sudo apt-get install -y curl
-      
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
+        run: apt-get update && apt-get install -y curl ca-certificates
+        
+      - name: Download and install .NET
+        run: |
+          curl -fsSL https://dotnet.microsoft.com/en-us/download/dotnet/scripts/v1/dotnet-install.sh | bash /dev/stdin --version ${{ matrix.dotnet-version }} --install-dir /usr/share/dotnet
+          echo "export PATH=/usr/share/dotnet:\$PATH" >> $GITHUB_ENV
 
-      - name: Display .NET info
+      - name: Verify .NET installation
         run: dotnet --info
         
       # - name: .NET build
